@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Get the current branch.
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+# Get the latest tag.
+TAG=$(git describe --abbrev=0 --tags)
+
+# Force re-tag at the current commit.
+git tag -f $TAG
+
+# Push the branch and tag to origin.
+git push origin $BRANCH
+git push origin $TAG
+
